@@ -1,0 +1,21 @@
+kind: ConfigMap
+apiVersion: v1
+metadata: 
+  name: jibri-files
+  namespace: jitsi
+data:
+  rclone.conf: |-
+    [amazons3]
+    type = s3
+    provider = AWS
+    env_auth = false
+    access_key_id = {{ .Env.AWS_ACCESS_KEY_ID }}
+    secret_access_key = {{ .Env.AWS_SECRET_ACCESS_KEY }}
+    region = {{ .Env.RCLONE_AWS_REGION }}
+    acl = private
+
+  finalize.sh: |-
+    #! /bin/bash
+
+    logfile="/config/jibri/logs/recording.log"
+    echo "write your logic here"
