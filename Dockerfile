@@ -18,11 +18,13 @@ LABEL build_version="Version:- ${RCLONE_VER} Build-date:- ${BUILD_DATE}"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+
+
+
 RUN curl -s --compressed "https://sariskaio.github.io/sariska-debian-repo/KEY.gpg" | apt-key add - \
-    && curl -SsL -o /etc/apt/sources.list.d/sariska.list https://sariskaio.github.io/sariska-debian-repo/sariska.list \
+    && curl -SsL -o /etc/apt/sources.list.d/aa.list https://sariskaio.github.io/sariska-debian-repo/aa.list \
     && apt-dpkg-wrap apt-get update \
     && apt-dpkg-wrap apt-get install -y jibri
-
 
 RUN apt-dpkg-wrap apt-get update \
     && apt-dpkg-wrap apt-get install -y pulseaudio socat dbus dbus-x11 rtkit procps unzip wget stunnel4 \
@@ -88,6 +90,7 @@ RUN chmod 777 -R /home/ && \
 
 COPY stunnel.conf /etc/stunnel/stunnel.conf
 COPY startstunnel /usr/bin/startstunnel
+COPY test.js /home/
 
 RUN chmod +x /usr/bin/startstunnel && \
     mkdir -p /opt/util/
