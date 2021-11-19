@@ -13,13 +13,9 @@ build-release:
 push-release:
 			docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${NAMESPACE}/$(APP_NAME):latest
 
-
-deploy-release:
-			kubectl kustomize ./k8s | kubectl apply -k ./k8s
-
 dev-server:
 		   docker run --env-file config/docker.env \
 		        --expose 5000 -p 5000:5000 \
 		        --rm -it  $(AWS_ACCOUNT_ID).dkr.ecr.$(REGION).amazonaws.com/$(NAMESPACE)/$(APP_NAME):latest
 
-deploy: build-release push-release deploy-release
+push-image: build-release push-release
