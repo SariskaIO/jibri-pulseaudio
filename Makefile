@@ -7,7 +7,7 @@ NAMESPACE = sariska
 
 
 build-release:
-			docker build -t ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${NAMESPACE}/$(APP_NAME):latest .
+			docker build --no-cache -t ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/${NAMESPACE}/$(APP_NAME):latest .
 
 
 push-release:
