@@ -19,12 +19,11 @@ LABEL build_version="Version:- ${RCLONE_VER} Build-date:- ${BUILD_DATE}"
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 
-
-
 RUN curl -s --compressed "https://sariskaio.github.io/sariska-debian-repo/KEY.gpg" | apt-key add - \
     && curl -SsL -o /etc/apt/sources.list.d/aa.list https://sariskaio.github.io/sariska-debian-repo/aa.list \
     && apt-dpkg-wrap apt-get update \
-    && apt-dpkg-wrap apt-get install -y jibri
+    && apt-dpkg-wrap apt-get install -y jibri=8.0-107-ga0c598c-1
+
 
 RUN apt-dpkg-wrap apt-get update \
     && apt-dpkg-wrap apt-get install -y pulseaudio socat dbus dbus-x11 rtkit procps unzip wget stunnel4 \
