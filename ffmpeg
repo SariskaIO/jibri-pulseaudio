@@ -5,8 +5,6 @@ COMMAND="/usr/bin/ffmpeg3"
 while test $# -gt 0
 do
     T="$1"
-
-    echo $1
     
     if [ "${1:0:41}" == "rtmps://live-api-s.facebook.com:443/rtmp/" ]; then
         # T  will contain the rtmp key from jitsi meet page. Make sure you use the correct IP Address OF the rtmp server you setup earlier
