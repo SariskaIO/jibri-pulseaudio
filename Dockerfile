@@ -89,7 +89,6 @@ RUN chmod 777 -R /home/ && \
 
 COPY stunnel.conf /etc/stunnel/stunnel.conf
 COPY startstunnel /usr/bin/startstunnel
-COPY test.js /home/
 
 RUN chmod +x /usr/bin/startstunnel && \
     mkdir -p /opt/util/
