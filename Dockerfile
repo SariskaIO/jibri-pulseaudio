@@ -22,7 +22,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN curl -s --compressed "https://sariskaio.github.io/sariska-debian-repo/KEY.gpg" | apt-key add - \
     && curl -SsL -o /etc/apt/sources.list.d/aa.list https://sariskaio.github.io/sariska-debian-repo/aa.list \
     && apt-dpkg-wrap apt-get update \
-    && apt-dpkg-wrap apt-get install -y jibri=8.0-158-g7d3e54d-1
+    && apt-dpkg-wrap apt-get install -y jibri=8.0-159-g0c23385-1
 
 
 RUN apt-dpkg-wrap apt-get update \
